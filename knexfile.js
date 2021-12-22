@@ -1,33 +1,27 @@
-require('dotenv').config();
 
-const pg = require('pg')
-
-if (process.env.DATABASE_URL) {
-    pg.defaults.ssl = { rejectUnauthorized: false }
-}
 
 
 module.exports = {
     
     development: {
-        client: 'pg',
+        client: 'sqlite3',
         migrations: { directory: './data/migrations' },
         seeds: { directory: './data/seeds' },
-        connection: process.env.DEV_DATABASE_URL,
+        connection:'./data/water_plants.db3',
     },
 
     testing: { 
-        client: 'pg',
+        client: 'sqlite3',
         migrations: {directory: './data/migrations' },
         seeds: { directory: './data/seeds' },
-        connection: process.env.TESTING_DATABASE_URL,
+        connection: './data/water_plants.db3',
     },
 
     production: {
-        client: 'pg',
+        client: 'sqlite3',
         migrations: { directory: './data/migrations' },
         seeds: { directory: './data/seeds'},
-        connection: process.env.DATABASE_URL,
+        connection:'./data/water_plants.db3',
         pool: { min: 2, max: 10 },
     },
 }

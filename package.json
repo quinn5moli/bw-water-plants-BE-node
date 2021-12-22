@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "reset": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
