@@ -28,3 +28,5 @@ router.delete('/:id', function (req, res) {
     Plants.deletePlant(id).then(() => res.status(200).json(`user ${id} destroyed`))
         .catch(err => res.status(500).json({ error: err, message: 'could not destroy plant'}));
 })
+
+module.exports = router;

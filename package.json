@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node api/server.js",
+    "server": "nodemon api/server.js",
     "reset": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "dependencies": {
