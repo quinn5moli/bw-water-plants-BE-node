@@ -64,16 +64,9 @@ async function deleteUserPlant({ user_id, plant_id }) {
     }
 }
 
-async function loginUser(user) {
-    const username = user.username;
-    const users = await db('users').where({ username });
-    const returnedUser = users[0];
-    const isValid = bcrypt.compareSync(user.password, returnedUser.password);
-    if (isValid) {
-        const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        return token;
-    }
-    return null;
+async function loginUser(username) {
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return { username, token };
 }
 
 async function updateUser({ id, user }) {
